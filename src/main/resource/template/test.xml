@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.LcIndexOnlinePerfMapper">
+    <resultMap id="BaseResultMap" type="com.test.entity.LcIndexOnlinePerf">
+        <id column="TRADE_DATE" jdbcType="VARCHAR" property="tradeDate"/>
+        <id column="INDEX_CODE" jdbcType="VARCHAR" property="indexCode"/>
+        <result column="FILE_DATE" jdbcType="VARCHAR" property="fileDate"/>
+        <result column="OPEN" jdbcType="DECIMAL" property="open"/>
+        <result column="HIGH" jdbcType="DECIMAL" property="high"/>
+        <result column="LOW" jdbcType="DECIMAL" property="low"/>
+        <result column="CLOSE" jdbcType="DECIMAL" property="close"/>
+        <result column="CHANGE" jdbcType="DECIMAL" property="change"/>
+        <result column="CHANGE_RATIO" jdbcType="DECIMAL" property="changeRatio"/>
+        <result column="QIANYI_DATE" jdbcType="DATE" property="qianyiDate"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        TRADE_DATE,INDEX_CODE,FILE_DATE,OPEN,HIGH,LOW,CLOSE,CHANGE,CHANGE_RATIO,QIANYI_DATE
+    </sql>
+
+    <sql id="Base_ondition_List">
+        <where>
+            <if test="tradeDate != null">
+                TRADE_DATE = #{tradeDate,jdbcType=VARCHAR}
+            </if>
+            <if test="indexCode != null">
+                and INDEX_CODE = #{indexCode,jdbcType=VARCHAR}
+            </if>
+            <if test="fileDate != null">
+                and FILE_DATE = #{fileDate,jdbcType=VARCHAR}
+            </if>
+            <if test="open != null">
+                and OPEN = #{open,jdbcType=DECIMAL}
+            </if>
+            <if test="high != null">
+                and HIGH = #{high,jdbcType=DECIMAL}
+            </if>
+            <if test="low != null">
+                and LOW = #{low,jdbcType=DECIMAL}
+            </if>
+            <if test="close != null">
+                and CLOSE = #{close,jdbcType=DECIMAL}
+            </if>
+            <if test="change != null">
+                and CHANGE = #{change,jdbcType=DECIMAL}
+            </if>
+            <if test="changeRatio != null">
+                and CHANGE_RATIO = #{changeRatio,jdbcType=DECIMAL}
+            </if>
+            <if test="qianyiDate != null">
+                and QIANYI_DATE = #{qianyiDate,jdbcType=DATE}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="insert" parameterType="com.test.entity.LcIndexOnlinePerf">
+        insert into LC_INDEX_ONLINE_PERF (<include refid="Base_Column_List"/>)
+        values(#{tradeDate,jdbcType=VARCHAR},#{indexCode,jdbcType=VARCHAR},#{fileDate,jdbcType=VARCHAR},#{open,jdbcType=DECIMAL},#{high,jdbcType=DECIMAL},#{low,jdbcType=DECIMAL},#{close,jdbcType=DECIMAL},#{change,jdbcType=DECIMAL},#{changeRatio,jdbcType=DECIMAL},#{qianyiDate,jdbcType=DATE})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.test.entity.LcIndexOnlinePerf">
+        insert into LC_INDEX_ONLINE_PERF
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tradeDate != null">
+                TRADE_DATE,
+            </if>
+            <if test="indexCode != null">
+                INDEX_CODE,
+            </if>
+            <if test="fileDate != null">
+                FILE_DATE,
+            </if>
+            <if test="open != null">
+                OPEN,
+            </if>
+            <if test="high != null">
+                HIGH,
+            </if>
+            <if test="low != null">
+                LOW,
+            </if>
+            <if test="close != null">
+                CLOSE,
+            </if>
+            <if test="change != null">
+                CHANGE,
+            </if>
+            <if test="changeRatio != null">
+                CHANGE_RATIO,
+            </if>
+            <if test="qianyiDate != null">
+                QIANYI_DATE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tradeDate != null">
+                #{tradeDate,jdbcType=VARCHAR},
+            </if>
+            <if test="indexCode != null">
+                #{indexCode,jdbcType=VARCHAR},
+            </if>
+            <if test="fileDate != null">
+                #{fileDate,jdbcType=VARCHAR},
+            </if>
+            <if test="open != null">
+                #{open,jdbcType=DECIMAL},
+            </if>
+            <if test="high != null">
+                #{high,jdbcType=DECIMAL},
+            </if>
+            <if test="low != null">
+                #{low,jdbcType=DECIMAL},
+            </if>
+            <if test="close != null">
+                #{close,jdbcType=DECIMAL},
+            </if>
+            <if test="change != null">
+                #{change,jdbcType=DECIMAL},
+            </if>
+            <if test="changeRatio != null">
+                #{changeRatio,jdbcType=DECIMAL},
+            </if>
+            <if test="qianyiDate != null">
+                #{qianyiDate,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.test.entity.LcIndexOnlinePerf">
+        update LC_INDEX_ONLINE_PERF set
+        FILE_DATE = #{fileDate,jdbcType=VARCHAR},
+        OPEN = #{open,jdbcType=DECIMAL},
+        HIGH = #{high,jdbcType=DECIMAL},
+        LOW = #{low,jdbcType=DECIMAL},
+        CLOSE = #{close,jdbcType=DECIMAL},
+        CHANGE = #{change,jdbcType=DECIMAL},
+        CHANGE_RATIO = #{changeRatio,jdbcType=DECIMAL},
+        QIANYI_DATE = #{qianyiDate,jdbcType=DATE}
+        <where>
+            <if test="tradeDate != null">
+                TRADE_DATE = #{tradeDate,jdbcType=VARCHAR}
+            </if>
+            <if test="indexCode != null">
+                and INDEX_CODE = #{indexCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </update>
+
+    <update id="updateSelective" parameterType="com.test.entity.LcIndexOnlinePerf">
+        update LC_INDEX_ONLINE_PERF
+        <set>
+            <if test="fileDate != null">
+                FILE_DATE = #{fileDate,jdbcType=VARCHAR},
+            </if>
+            <if test="open != null">
+                OPEN = #{open,jdbcType=DECIMAL},
+            </if>
+            <if test="high != null">
+                HIGH = #{high,jdbcType=DECIMAL},
+            </if>
+            <if test="low != null">
+                LOW = #{low,jdbcType=DECIMAL},
+            </if>
+            <if test="close != null">
+                CLOSE = #{close,jdbcType=DECIMAL},
+            </if>
+            <if test="change != null">
+                CHANGE = #{change,jdbcType=DECIMAL},
+            </if>
+            <if test="changeRatio != null">
+                CHANGE_RATIO = #{changeRatio,jdbcType=DECIMAL},
+            </if>
+            <if test="qianyiDate != null">
+                QIANYI_DATE = #{qianyiDate,jdbcType=DATE},
+            </if>
+        </set>
+        <where>
+            <if test="tradeDate != null">
+                TRADE_DATE = #{tradeDate,jdbcType=VARCHAR}
+            </if>
+            <if test="indexCode != null">
+                and INDEX_CODE = #{indexCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </update>
+
+
+
+    <update id="updateByParams" parameterType="com.test.entity.LcIndexOnlinePerf">
+        update LC_INDEX_ONLINE_PERF
+        <set>
+            <if test="fileDate != null">
+                FILE_DATE = #{fileDate,jdbcType=VARCHAR},
+            </if>
+            <if test="open != null">
+                OPEN = #{open,jdbcType=DECIMAL},
+            </if>
+            <if test="high != null">
+                HIGH = #{high,jdbcType=DECIMAL},
+            </if>
+            <if test="low != null">
+                LOW = #{low,jdbcType=DECIMAL},
+            </if>
+            <if test="close != null">
+                CLOSE = #{close,jdbcType=DECIMAL},
+            </if>
+            <if test="change != null">
+                CHANGE = #{change,jdbcType=DECIMAL},
+            </if>
+            <if test="changeRatio != null">
+                CHANGE_RATIO = #{changeRatio,jdbcType=DECIMAL},
+            </if>
+            <if test="qianyiDate != null">
+                QIANYI_DATE = #{qianyiDate,jdbcType=DATE},
+            </if>
+        </set>
+        <where>
+            <if test="tradeDate != null">
+                TRADE_DATE = #{tradeDate,jdbcType=VARCHAR}
+            </if>
+            <if test="indexCode != null">
+                and INDEX_CODE = #{indexCode,jdbcType=VARCHAR}
+            </if>
+            <if test="fileDate != null">
+                and FILE_DATE = #{fileDate,jdbcType=VARCHAR}
+            </if>
+            <if test="open != null">
+                and OPEN = #{open,jdbcType=DECIMAL}
+            </if>
+            <if test="high != null">
+                and HIGH = #{high,jdbcType=DECIMAL}
+            </if>
+            <if test="low != null">
+                and LOW = #{low,jdbcType=DECIMAL}
+            </if>
+            <if test="close != null">
+                and CLOSE = #{close,jdbcType=DECIMAL}
+            </if>
+            <if test="change != null">
+                and CHANGE = #{change,jdbcType=DECIMAL}
+            </if>
+            <if test="changeRatio != null">
+                and CHANGE_RATIO = #{changeRatio,jdbcType=DECIMAL}
+            </if>
+            <if test="qianyiDate != null">
+                and QIANYI_DATE = #{qianyiDate,jdbcType=DATE}
+            </if>
+        </where>
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from LC_INDEX_ONLINE_PERF
+        <where>
+            <if test="tradeDate != null">
+                TRADE_DATE = #{tradeDate,jdbcType=VARCHAR}
+            </if>
+            <if test="indexCode != null">
+                and INDEX_CODE = #{indexCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </delete>
+
+    <select id="select" parameterType="com.test.entity.LcIndexOnlinePerf" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from LC_INDEX_ONLINE_PERF
+        <include refid="Base_ondition_List"/>
+    </select>
+
+    <select id="selectOne" parameterType="com.test.entity.LcIndexOnlinePerf" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from LC_INDEX_ONLINE_PERF
+        <include refid="Base_ondition_List"/>
+    </select>
+</mapper>

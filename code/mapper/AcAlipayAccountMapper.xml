@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.honglu.headline.message.service.mapper.auto.AcAlipayAccountMapper">
+    <resultMap id="BaseResultMap" type="com.honglu.headline.message.service.entity.auto.AcAlipayAccount">
+        <id column="alipay_account_id" jdbcType="BIGINT" property="alipayAccountId"/>
+        <result column="customer_info_id" jdbcType="BIGINT" property="customerInfoId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        alipay_account_id,customer_info_id,name,account,create_time,modify_time
+    </sql>
+
+    <sql id="Base_ondition_List">
+        <where>
+            <if test="alipayAccountId != null">
+                alipay_account_id = #{alipayAccountId,jdbcType=BIGINT}
+            </if>
+            <if test="customerInfoId != null">
+                and customer_info_id = #{customerInfoId,jdbcType=BIGINT}
+            </if>
+            <if test="name != null">
+                and name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="account != null">
+                and account = #{account,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifyTime != null">
+                and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </sql>
+
+    <insert id="insert" parameterType="com.honglu.headline.message.service.entity.auto.AcAlipayAccount">
+        insert into ac_alipay_account (<include refid="Base_Column_List" />)
+        values(#{alipayAccountId,jdbcType=BIGINT},#{customerInfoId,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{account,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},#{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.honglu.headline.message.service.entity.auto.AcAlipayAccount">
+        insert into ac_alipay_account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="alipayAccountId != null">
+                alipay_account_id,
+            </if>
+            <if test="customerInfoId != null">
+                customer_info_id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="account != null">
+                account,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="alipayAccountId != null">
+                #{alipayAccountId,jdbcType=BIGINT},
+            </if>
+            <if test="customerInfoId != null">
+                #{customerInfoId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null">
+                #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.honglu.headline.message.service.entity.auto.AcAlipayAccount">
+        update ac_alipay_account set
+        customer_info_id = #{customerInfoId,jdbcType=BIGINT},
+        name = #{name,jdbcType=VARCHAR},
+        account = #{account,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        <where>
+            <if test="alipayAccountId != null">
+                alipay_account_id = #{alipayAccountId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.honglu.headline.message.service.entity.auto.AcAlipayAccount">
+        update ac_alipay_account
+        <set>
+            <if test="customerInfoId != null">
+                customer_info_id = #{customerInfoId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null">
+                account = #{account,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        <where>
+            <if test="alipayAccountId != null">
+                alipay_account_id = #{alipayAccountId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="map">
+        delete from ac_alipay_account
+        <where>
+            <if test="alipayAccountId != null">
+                alipay_account_id = #{alipayAccountId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </delete>
+
+    <select id="selectOne" parameterType="com.honglu.headline.message.service.entity.auto.AcAlipayAccount" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ac_alipay_account
+        <include refid="Base_ondition_List" />
+    </select>
+
+    <select id="selectList" parameterType="com.honglu.headline.message.service.entity.auto.AcAlipayAccount" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ac_alipay_account
+        <include refid="Base_ondition_List" />
+    </select>
+</mapper>
